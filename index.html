@@ -1,0 +1,101 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="index.js">
+    <title></title>
+</head>
+<body>
+       
+
+</body>
+</html>
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Chloe</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Jacquard+12&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Container to hold confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        /* Individual confetti styling */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <h1>HAPPY BIRTHDAY BRAIN</h1>
+    <img id="img1" src="https://media0.giphy.com/media/DY1KSjEuVMarPIzfkq/giphy.gif?cid=6c09b95228v613wra7ymcqf18pypg6wbxrlqom9trakd7vuf&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="">
+    <img id="img2" src="https://i.pinimg.com/originals/14/fc/7d/14fc7d1120735dd8e2064a38913ea339.gif" alt="">
+    <img id="img3" src="https://media1.giphy.com/media/JJ0f57S94Ujyo/giphy.gif?cid=6c09b952c5k8wpmllnf28f5dlwseg9s03ftmjs7bqti8hd11&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt=""> 
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <script>
+        // Function to generate confetti
+        function generateConfetti() {
+            const container = document.getElementById('confetti-container');
+
+            // Generate 100 confetti pieces
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+
+                // Randomly set the starting position and color
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * 100}vh`;
+                confetti.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+
+                // Randomly set the animation duration and delay
+                const duration = Math.random() * 3 + 2; // Between 2 to 5 seconds
+                const delay = Math.random() * 2; // Up to 2 seconds
+                confetti.style.animation = `fall ${duration}s linear ${delay}s infinite`;
+
+                container.appendChild(confetti);
+            }
+        }
+
+        // Add CSS animation to make confetti fall
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh);
+                    rotate: 360deg;
+                }
+            }
+
+            .confetti {
+                animation-name: fall;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Generate confetti when page opens
+        generateConfetti();
+    </script>
+</body>
+</html>
